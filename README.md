@@ -1,6 +1,8 @@
 Gofreta Admin UI
 ======================================================================
 
+![Interface screenshot](http://i.cubeupload.com/ddWm5J.png)
+
 Gofreta Admin UI is a frontend admin interface for the Gofreta REST API. It is built with [Vue.js](https://vuejs.org/) and [Webpack](https://webpack.js.org/).
 
 > For more detailed explanation on how things work, check out the [Vue Webpack guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
@@ -35,3 +37,8 @@ npm run build --report
 Gofreta Admin UI is part from [Gofreta](https://gofreta.com) - an Open Source project licensed under the [BSD3-License](LICENSE.md).
 
 Help us improve and continue the project development - [https://gofreta.com/support-us](https://gofreta.com/support-us)
+
+---
+
+**@todo:**
+- Add e2e tests

@@ -3,6 +3,6 @@ module.exports = {
     supportEmail:  'support@gofreta.com',
     baseTitle:     'Gofreta Admin',
     homepageRoute: 'collection-index',
-    dateFormat:    'YYYY-MM-DD HH:mm:ss'
-    authCookieKey: 'AUTH_DATA',
+    dateFormat:    'YYYY-MM-DD HH:mm:ss',
+    authCookieKey: 'AUTH_DATA'
 }
