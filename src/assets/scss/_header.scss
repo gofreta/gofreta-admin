@@ -1,0 +1,289 @@
+// Page header
+.page-header {
+    $vSpacing: 30px;
+
+    @extend %block;
+    margin-bottom: $baseSpacing;
+    background: $primaryColor;
+    color:#fff;
+    .wrapper {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+        height: 100%;
+        min-height: 75px;
+        &:after {
+            display: none;
+            content: none;
+        }
+    }
+    .header-item {
+        position: relative;
+        margin-left: $baseSpacing;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    // logo
+    .logo {
+        font-size: 26px;
+        line-height: 28px;
+        text-decoration: none;
+        font-family: $titleFont;
+        white-space: nowrap;
+        .label {
+            font-size: 11px;
+            line-height: 1;
+            padding: 2px 3px;
+            margin-top: -25px;
+            margin-left: -8px;
+            font-family: $baseFont;
+        }
+    }
+
+    // main menu
+    .main-menu {
+        width: 100%;
+        ul {
+            @extend %block;
+            @include clear-list;
+        }
+        .menu-item {
+            position: relative;
+            float: left;
+            position: relative;
+            text-decoration: none;
+            height: 100%;
+            padding: $vSpacing 5px;
+            cursor: pointer;
+            margin-left: $baseSpacing;
+            font-size: 16px;
+            color: $lightPrimaryColor;
+            @include transition(color 0.2s);
+            @include user-select(none);
+            &:first-child {
+                margin-left: 0;
+            }
+            &:after { // active border
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 3px;
+                background: $lightPrimaryColor;
+                display: none;
+            }
+            &:hover {
+                color: #fff;
+            }
+            &.active {
+                color: #fff;
+                &:after {
+                    display: block;
+                }
+            }
+        }
+        i, .txt {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        i {
+            margin-right: 5px;
+        }
+    }
+
+    // submenu
+    .sub-menu {
+        @extend %panel;
+        position: absolute;
+        z-index: $headerDropdownZ;
+        left: 50%;
+        top: 100%;
+        width: 100%;
+        min-width: 150px;
+        margin-top: -5px;
+        @include hide;
+        @include transform(translate(-50%, 10px));
+        @include transition(opacity 0.2s, visibility 0.2s, transform 0.2s);
+        // dropdown arrow
+        &:before {
+            $arrowSize: 6px;
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 0;
+            height: 0;
+            margin-left: -$arrowSize;
+            margin-top: -($arrowSize - 1);
+            border-left: $arrowSize solid transparent;
+            border-right: $arrowSize solid transparent;
+            border-bottom: $arrowSize solid #fff;
+        }
+        ul {
+            @extend %block;
+            @include clear-list;
+        }
+        .sub-menu-item {
+            @extend %block;
+            padding: 10px;
+            color: $txtColor;
+            cursor: pointer;
+            text-decoration: none;
+            line-height: $baseFontSize + 4;
+            font-size: $baseFontSize;
+            border-bottom: 1px solid $lightGreyColor;
+            @include transition(background 0.2s);
+            &:first-child {
+                @include border-top-left-radius($baseRadius);
+                @include border-top-right-radius($baseRadius);
+            }
+            &:last-child {
+                border-bottom: 0;
+                @include border-bottom-left-radius($baseRadius);
+                @include border-bottom-right-radius($baseRadius);
+            }
+            &:hover {
+                background: $lightGreyColor;
+            }
+            &:active {
+                background: $greyColor;
+            }
+            &.active {
+                color: $primaryColor;
+            }
+        }
+    }
+    .menu-item:hover .sub-menu {
+        @include show;
+        @include transform(translate(-50%, 0px));
+    }
+
+    // profile
+    .profile {
+        white-space: nowrap;
+        color: $lightPrimaryColor;
+        @include user-select(none);
+        .profile-label {
+            @include ellipsis;
+            display: inline-block;
+            vertical-align: top;
+            max-width: 200px;
+            color: inherit;
+            text-decoration: none;
+            @include transition(color 0.2s);
+            &:hover {
+                color: #fff;
+            }
+        }
+        .logout-link {
+            font-size: $baseFontSize - 2;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            @include transition(color 0.2s);
+            &:hover {
+                color: $dangerColor;
+            }
+        }
+    }
+
+    // responsive
+    // @media screen and (max-width: 700px) {
+    //     text-align: center;
+    //     .wrapper {
+    //         display: block;
+    //         padding-top: $smallSpacing;
+    //         padding-bottom: $smallSpacing;
+    //     }
+    //     .header-item {
+    //         float: none;
+    //         display: block;
+    //         clear: both;
+    //         margin: 0;
+    //     }
+    //     .main-menu {
+    //         .menu-item {
+    //             display: inline-block;
+    //             vertical-align: top;
+    //             float: none;
+    //             padding: $smallSpacing 5px;
+    //             &:after {
+    //                 content: none;
+    //                 display: none;
+    //             }
+    //         }
+    //     }
+    // }
+}
+
+// Content header
+.breadcrumb {
+    @extend %block;
+    @extend %clear-after;
+    ul {
+        @extend %block;
+        @include clear-list;
+    }
+    .breadcrumb-item {
+        @extend h4;
+        width: auto;
+        clear: none;
+        float: left;
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+        color: $txtColor;
+        a, .ctrl {
+            color: $darkGreyColor;
+            cursor: pointer;
+            text-decoration: none;
+            @include transition(color 0.2s);
+            &:hover {
+                color: $txtColor;
+            }
+        }
+        i {
+            font-size: 17px;
+        }
+        &:after {
+            content: "V";
+            display: inline-block;
+            margin: 0 5px;
+            font-family: $iconFont;
+            vertical-align: top;
+            color: $darkGreyColor;
+        }
+        &:last-child:after {
+            content: none;
+            display: none;
+        }
+    }
+}
+.content-header {
+    @extend %block;
+    margin-bottom: $baseSpacing;
+    .wrapper {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+        &:after {
+            display: none;
+            content: none;
+        }
+    }
+    .btn-group {
+        white-space: nowrap;
+        .btn {
+            margin: -7px 0;
+            padding: 9px 15px;
+            &:active {
+                padding-top: 11px;
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+// paths
+$fontsPath:  '../fonts';
+$imagesPath: '../images';
+
+// fonts
+$baseFont:  'Ubuntu', Arial, Helvetica, sans-serif;
+$titleFont: 'Comfortaa', Arial, Helvetica, sans-serif;
+$iconFont:  'Dripicons';
+
+// colors
+$primaryColor:         #4257b2;
+$lightPrimaryColor:    lighten($primaryColor, 25%);
+$darkPrimaryColor:     #02b4b7;
+$greyColor:            #e6ecf0;
+$darkGreyColor:        #a7b2c9;
+$lightGreyColor:       #f3f6f8;
+$txtColor:             #4d5961;
+$successColor:         #00d9a4;
+$dangerColor:          #ef3c54;
+$warningColor:         #f5a14b;
+$overlayColor:         rgba($darkGreyColor, 0.5);
+
+// sizes
+$wrapperWidth:   1250px;
+$footerHeight:   65px;
+$baseLineHeight: 22px;
+$baseFontSize:   14px;
+$baseRadius:     3px;
+$baseSpacing:    30px;
+$smallSpacing:   20px;
+$btnHeight:      42px;
+$smallBtnHeight: 30px;
+$largeBtnHeight: 50px;
+
+// zindex
+$headerDropdownZ: 100;
+$popupZ: 300;
+
+// others
+$colorsList: (
+    ('primary',    $primaryColor,   #fff),
+    ('success',    $successColor,   #fff),
+    ('danger',     $dangerColor,    #fff),
+    ('warning',    $warningColor,   #fff),
+    ('grey',       $greyColor,      $txtColor),
+    ('light-grey', $lightGreyColor, $txtColor),
+    ('dark-grey',  $darkGreyColor,  #fff),
+    ('dark',       $txtColor,       #fff),
+);
+$sidesList: (
+    ('l', 'left'),
+    ('r', 'right'),
+    ('t', 'top'),
+    ('b', 'bottom'),
+);

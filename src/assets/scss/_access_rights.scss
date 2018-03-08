@@ -1,0 +1,6 @@
+.access-rights-list {
+    @include items-per-row(4, $baseSpacing, '.list-item');
+    .list-item {
+        margin-bottom: $smallSpacing;
+    }
+}

@@ -1,0 +1,29 @@
+%block {
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
+%clear-after {
+    &:after {
+        content: "";
+        width: 100%;
+        clear: both;
+        display: table;
+    }
+}
+
+%heading {
+    @extend %block;
+    margin: 15px 0 10px;
+    font-weight: normal;
+    font-family: $titleFont;
+}
+
+%panel {
+    @extend %clear-after;
+    background: #fff;
+    border: 1px solid $greyColor;
+    @include shadowize;
+    @include border-radius($baseRadius);
+}

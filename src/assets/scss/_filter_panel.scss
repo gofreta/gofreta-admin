@@ -1,0 +1,53 @@
+.filter-panel {
+    @extend %panel;
+    @extend %block;
+    @extend %clear-after;
+    padding: 20px;
+    margin: 0 0 $baseSpacing;
+
+    // filter item
+    .filter-item {
+        float: left;
+        margin: 0 0 0 $baseSpacing;
+        &:first-child {
+            margin-left: 0;
+        }
+        .form-group {
+            margin: 0;
+            width: auto;
+            label, input, select {
+                display: inline-block;
+                vertical-align: middle;
+                clear: none;
+                width: auto;
+            }
+            input, select {
+                min-width: 100px;
+            }
+            label {
+                margin-right: 5px;
+                color: $darkGreyColor;
+            }
+        }
+        &.search-box {
+            float: right;
+        }
+    }
+
+    // transparent layout
+    &.filter-transp {
+        padding: 0 0 20px;
+        background: none;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        @include box-shadow(none);
+    }
+
+    // compact layout
+    &.filter-compact {
+        background: $lightGreyColor;
+        padding: 10px 15px;
+        @include box-shadow(none);
+    }
+}

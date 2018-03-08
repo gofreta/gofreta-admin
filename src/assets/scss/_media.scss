@@ -1,0 +1,108 @@
+// Media item
+.media-item {
+    @extend %block;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    .caption {
+        @extend %block;
+        position: relative;
+        z-index: 2;
+        padding: 8px;
+        margin: -3px 0 0;
+        background: #fff;
+        color: $darkGreyColor;
+        font-size: $baseFontSize - 1;
+        line-height: $baseFontSize + 2;
+        border: 1px solid $greyColor;
+        @include ellipsis;
+        @include border-bottom-left-radius($baseRadius);
+        @include border-bottom-right-radius($baseRadius);
+    }
+    a.featured-thumb {
+        @include transition(box-shadow 0.2s);
+        &:hover {
+            @include shadowize(rgba($txtColor, 0.2));
+        }
+
+    }
+    .title {
+        @extend %block;
+        margin: 10px 0 0;
+        font-weight: normal;
+        font-size: $baseFontSize;
+        @include ellipsis;
+    }
+    .bulk-toggle {
+        $spacing: 5px;
+        position: absolute;
+        z-index: 1;
+        width: auto;
+        margin: 0;
+        padding: 5px;
+        left: $spacing;
+        top: $spacing;
+        opacity: 0.8;
+        @include transition(opacity 0.2s);
+        &:hover,
+        &:active,
+        &.active {
+            opacity: 1;
+        }
+    }
+}
+
+// Media index list
+.media-list {
+    @extend %block;
+    @include items-per-row(6, $baseSpacing, '.media-item');
+    @media screen and (max-width: 1000px)  {
+        @include items-per-row(5, $baseSpacing, '.media-item');
+    }
+    @media screen and (max-width: 800px)  {
+        @include items-per-row(4, $baseSpacing, '.media-item');
+    }
+    @media screen and (max-width: 650px)  {
+        @include items-per-row(3, $baseSpacing, '.media-item');
+    }
+    @media screen and (max-width: 500px)  {
+        @include items-per-row(2, $baseSpacing, '.media-item');
+    }
+}
+
+// Media picker list
+.media-picker-list {
+    @extend %block;
+    @include items-per-row(4, $baseSpacing, '.media-item');
+    .media-item {
+        cursor: pointer;
+        backface-visibility: hidden;
+        @include transition(transform 0.15s);
+        &:hover {
+            @include transform(scale(1.06));
+        }
+        &:active {
+            @include transform(scale(1.09));
+        }
+    }
+    @media screen and (max-width: 650px)  {
+        @include items-per-row(3, $baseSpacing, '.media-item');
+    }
+    @media screen and (max-width: 450px)  {
+        @include items-per-row(2, $baseSpacing, '.media-item');
+    }
+}
+
+// Preview panel
+.preview-panel {
+    @extend %block;
+    text-align: center;
+    img {
+        display: inline-block;
+        vertical-align: top;
+        max-width: 100%;
+        background: #fff;
+        border: 1px solid $greyColor;
+        @include shadowize;
+    }
+}

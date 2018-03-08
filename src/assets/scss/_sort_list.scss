@@ -1,0 +1,84 @@
+$minSortableItemHeight: 63px;
+
+.sortable-item {
+    @extend %block;
+    min-height: $minSortableItemHeight;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+    background: $greyColor;
+    border: 1px solid darken($greyColor, 1%);
+    @include user-select(none);
+    @include border-radius($baseRadius);
+    @include transition(color 0.2s, background 0.2s, border 0.2s);
+    &:hover {
+        border-color: $darkGreyColor;
+    }
+    .sortable-item-elem {
+        color: inherit;
+        margin-left: 10px;
+        line-height: 20px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    .icon {
+        $size: 40px;
+        width: $size;
+        height: $size;
+        line-height: $size;
+        text-align: center;
+        background: #fff;
+        color: $successColor;
+        flex-grow: 0;
+        flex-shrink: 0;
+        i {
+            display: inline-block;
+            vertical-align: top;
+        }
+        @include border-radius($size);
+    }
+    .title {
+        width: 100%;
+    }
+    &.sortable-placeholder {
+        border-color: $darkGreyColor;
+        border-style: dashed;
+    }
+    &.vddl-dragging-source {
+        display: none;
+    }
+}
+
+.sortable-list{
+    @extend %block;
+    position: relative;
+    padding: 0 $smallSpacing;
+    border: 2px dashed $greyColor;
+    min-height: $minSortableItemHeight;
+    @include border-radius($baseRadius);
+    &.empty {
+        &:after {
+            content: "Drag and drop elements from the fields menu to define your collection structure.";
+            display: block;
+            line-height: $baseLineHeight;
+            color: $darkGreyColor;
+            padding: (20 + ($minSortableItemHeight - $baseLineHeight) / 2) 0;
+        }
+    }
+    &.vddl-dragover {
+        &:after {
+            display: none;
+        }
+    }
+    .sortable-item {
+        margin: $smallSpacing 0;
+        &.vddl-dragging {
+            opacity: 0.4;
+        }
+    }
+}

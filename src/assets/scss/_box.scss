@@ -1,0 +1,138 @@
+.box {
+    @extend %panel;
+    position: relative;
+    width: 100%;
+    padding: $baseSpacing;
+    text-align: center;
+    text-decoration: none;
+    @include transition(color 0.2s, background 0.2s, border 0.2s);
+
+    // sides
+    .box-side {
+        $margin: 10px;
+        position: absolute;
+        z-index: 1;
+        line-height: normal;
+        &.top-left {
+            top: $margin;
+            left: $margin;
+        }
+        &.top-right {
+            top: $margin;
+            right: $margin;
+        }
+        &.bottom-left {
+            bottom: $margin;
+            left: $margin;
+        }
+        &.bottom-right {
+            bottom: $margin;
+            right: $margin;
+        }
+    }
+
+    // side items
+    .box-side-item {
+        $size: 20px;
+        display: inline-block;
+        vertical-align: top;
+        cursor: pointer;
+        height: $size;
+        line-height: $size;
+        min-width: $size;
+        padding: 0 2px;
+        text-align: center;
+        color: $darkGreyColor;
+        text-decoration: none;
+        @include user-select(none);
+        @include border-radius($baseRadius);
+        @include transition(color 0.2s, background 0.2s);
+        i {
+            font-size: $baseFontSize + 2;
+        }
+        .dropdown {
+            position: absolute;
+            z-index: 2;
+            right: 0;
+            top: 100%;
+            margin-top: 5px;
+            i {
+                font-size: inherit;
+            }
+        }
+        &:hover {
+            background: $greyColor;
+        }
+        &.active,
+        &:active {
+            color: $txtColor;
+            background: $greyColor;
+        }
+    }
+
+    // content
+    .box-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        & > :first-child {
+            margin-top: 0 !important;
+        }
+        & > :last-child {
+            margin-bottom: 0 !important;
+        }
+        .title {
+            margin: 0 0 $smallSpacing;
+        }
+        .meta {
+            @extend %block;
+            opacity: 0.5;
+        }
+    }
+
+    // color layouts
+    @each $color in $colorsList {
+        &.box-#{nth($color, 1)} {
+            border-color: nth($color, 2);
+            background: rgba(nth($color, 2), 0.03);
+            color: nth($color, 2);
+        }
+    }
+
+    @at-root {
+        a#{&} {
+            text-decoration: none;
+            &:hover {
+                border-color: $darkGreyColor;
+            }
+            &:active {
+                border-color: $txtColor;
+            }
+            @each $color in $colorsList {
+                &.box-#{nth($color, 1)} {
+                    border-color: nth($color, 2);
+                    &:hover {
+                        background: rgba(nth($color, 2), 0.08);
+                    }
+                    &:active {
+                        background: rgba(nth($color, 2), 0.15);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Lists
+.collections-list {
+    @include items-per-row(4);
+    .box {
+        height: 200px;
+    }
+    @media screen and (max-width: 1000px)  {
+        @include items-per-row(2);
+    }
+}

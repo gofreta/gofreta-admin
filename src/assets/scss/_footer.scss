@@ -1,0 +1,35 @@
+.page-footer {
+    @extend %block;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    bottom: 0;
+    background: none;
+    color: $darkGreyColor;
+    height: $footerHeight;
+    .wrapper {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+        height: 100%;
+        border-top: 1px solid $greyColor;
+        &:after {
+            display: none;
+            content: none;
+        }
+    }
+    .footer-item {
+        margin-left: $baseSpacing;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    a {
+        text-decoration: none;
+        @include transition(color 0.2s);
+        &:hover {
+            color: $primaryColor;
+        }
+    }
+}

@@ -1,0 +1,963 @@
+@include selection($lightPrimaryColor);
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: $lightGreyColor;
+}
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    z-index: 0;
+    min-height: 100%;
+    padding-bottom: $footerHeight + $baseSpacing;
+    color: $txtColor;
+    font-family: $baseFont;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    min-width: 700px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+a, .default-link {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+    }
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+
+hr {
+    @extend %block;
+    @extend %clear-after;
+    border: 0;
+    outline: none;
+    height: 1px;
+    background: $greyColor;
+    margin: $baseSpacing 0;
+}
+
+code {
+    font-family: monospace;
+    padding: 5px 10px;
+    background: $lightGreyColor;
+    @include border-radius($baseRadius);
+    &.code-block {
+        @extend %block;
+        max-height: 300px;
+        overflow: auto;
+    }
+}
+
+small {
+    font-size: $baseFontSize - 2;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+// titles
+h1 {
+    @extend %heading;
+    font-size: 26px;
+    line-height: 32px;
+}
+h2 {
+    @extend %heading;
+    font-size: 24px;
+    line-height: 30px;
+}
+h3 {
+    @extend %heading;
+    font-size: 22px;
+    line-height: 28px;
+}
+h4 {
+    @extend %heading;
+    font-size: 20px;
+    line-height: 26px;
+}
+h5 {
+    @extend %heading;
+    font-size: 18px;
+    line-height: 24px;
+}
+h6 {
+    @extend %heading;
+    font-size: 16px;
+    line-height: 24px;
+}
+.txt-title {
+    font-family: $titleFont;
+}
+
+// lists
+ul, ol {
+    padding-left: 10px;
+    margin: 10px 0;
+    li {
+        position: relative;
+        margin: 5px 0;
+    }
+}
+ul {
+    li {
+        padding-left: 20px;
+        &:before {
+            $size: 6px;
+            content: "";
+            display: inline-block;
+            vertical-align: top;
+            position: absolute;
+            left: 5px;
+            top: 9px;
+            width: $size;
+            height: $size;
+            background: $txtColor;
+            @include border-radius(50%);
+        }
+    }
+}
+ol {
+    padding-left: 28px;
+    list-style: decimal outside none;
+    li {
+        padding-left: 2px;
+    }
+}
+
+// align helpers
+.float-left {
+    float: left !important;
+}
+.float-right {
+    float: right !important;
+}
+.txt-left {
+    text-align: left !important;
+}
+.txt-right {
+    text-align: right !important;
+}
+.txt-center {
+    text-align: center !important;
+}
+.v-align-top {
+    vertical-align: top !important;
+}
+.v-align-middle {
+    vertical-align: middle !important;
+}
+.v-align-bottom {
+    vertical-align: bottom !important;
+}
+
+// tables
+.table {
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    border-collapse: separate;
+    @include border-radius($baseRadius);
+    th, td {
+        background: #fff;
+        text-align: left;
+        padding: 20px;
+        border-bottom: 1px solid $lightGreyColor;
+        @include transition(border-color 0.15s);
+        &.min-width {
+            width: 1%;
+            white-space: nowrap;
+        }
+        &.max-width {
+            width: 99%;
+        }
+    }
+    th {
+        font-weight: bold;
+        color: $darkGreyColor;
+        font-size: $baseFontSize - 1px;
+        text-transform: uppercase;
+    }
+    td:first-child,
+    th:first-child {
+        border-left: 1px solid $greyColor;
+    }
+    td:last-child,
+    th:last-child {
+        border-right: 1px solid $greyColor;
+    }
+    thead,
+    tbody {
+        tr:first-child {
+            td, th {
+                border-top: 1px solid $greyColor;
+            }
+            td:first-child, th:first-child {
+                @include border-top-left-radius($baseRadius);
+            }
+            td:last-child, th:last-child {
+                @include border-top-right-radius($baseRadius);
+            }
+        }
+        &:last-child {
+            tr:last-child {
+                td, th {
+                    border-bottom-color: $greyColor;
+                }
+                td:first-child, th:first-child {
+                    @include border-bottom-left-radius($baseRadius);
+                }
+                td:last-child, th:last-child {
+                    @include border-bottom-right-radius($baseRadius);
+                }
+            }
+        }
+    }
+    thead + tbody {
+        tr:first-child {
+            td, th {
+                border-top-color: $lightGreyColor;
+            }
+            td:first-child, th:first-child {
+                @include border-top-left-radius(0);
+            }
+            td:last-child, th:last-child {
+                @include border-top-right-radius(0);
+            }
+        }
+    }
+    tbody tr {
+        &:hover {
+            td:first-child {
+                border-left-color: $primaryColor;
+            }
+        }
+    }
+
+    // Layouts and styles
+    &.table-shadowize {
+        @include shadowize;
+    }
+    &.table-bordered {
+        th, td {
+            border-right: 1px solid $greyColor;
+        }
+    }
+    &.table-compact {
+        th, td {
+            padding: 8px;
+        }
+        th {
+            font-size: 11.5px;
+        }
+    }
+    &.v-align-top {
+        td, th {
+            vertical-align: top;
+        }
+    }
+    &.v-align-middle {
+        td, th {
+            vertical-align: middle;
+        }
+    }
+    &.v-align-bottom {
+        td, th {
+            vertical-align: bottom;
+        }
+    }
+
+    // helper elements
+    .header-handle {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        vertical-align: top;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        padding: 0 5px;
+        @include user-select(none);
+        @include transition(color 0.2s);
+        .dropdown {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            .list {
+                max-height: 280px;
+                overflow: auto;
+            }
+        }
+        .header-icon {
+            margin-left: 5px;
+        }
+        .options-icon {
+            font-size: 20px;
+        }
+        &:hover,
+        &.active {
+            color: $primaryColor;
+        }
+    }
+}
+
+// spacing helpers
+.p-small {
+    padding: $smallSpacing !important;
+}
+.p-base {
+    padding: $baseSpacing !important;
+}
+.m-small {
+    margin: $smallSpacing !important;
+}
+.m-base {
+    margin: $baseSpacing !important;
+}
+@each $side in $sidesList {
+    .p-#{nth($side, 1)}-base {
+        padding-#{nth($side, 2)}: $baseSpacing !important;
+    }
+    .p-#{nth($side, 1)}-small {
+        padding-#{nth($side, 2)}: $smallSpacing !important;
+    }
+    .m-#{nth($side, 1)}-base {
+        margin-#{nth($side, 2)}: $baseSpacing !important;
+    }
+    .m-#{nth($side, 1)}-small {
+        margin-#{nth($side, 2)}: $smallSpacing !important;
+    }
+}
+@for $i from 0 through 8 {
+    $val: $i * 5;
+    .p-#{$val} {
+        padding: #{$val}px !important;
+    }
+    .m-#{$val} {
+        margin: #{$val}px !important;
+    }
+    @each $side in $sidesList {
+        .p-#{nth($side, 1)}-#{$val} {
+            padding-#{nth($side, 2)}: #{$val}px !important;
+        }
+        .m-#{nth($side, 1)}-#{$val} {
+            margin-#{nth($side, 2)}: #{$val}px !important;
+        }
+    }
+}
+
+// containers
+.wrapper {
+    @extend %clear-after;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: $wrapperWidth;
+    max-width: 100%;
+    @media screen and (max-width: $wrapperWidth)  {
+        padding-left: $smallSpacing;
+        padding-right: $smallSpacing;
+    }
+}
+.wrapper-half {
+    width: $wrapperWidth / 2;
+}
+.hidden {
+    display: none !important;
+}
+.clearfix {
+    @extend %block;
+    @extend %clear-after;
+}
+.block {
+    @extend %block;
+}
+.table-block {
+    display: table;
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse;
+    .table-cell {
+        vertical-align: middle;
+        display: table-cell;
+    }
+}
+.full-height-block {
+    @extend %block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    padding: $baseSpacing;
+    padding-bottom: $footerHeight + $baseSpacing;
+    @include v-align-helper;
+    @media screen and (max-height: 600px)  {
+        position: relative;
+        padding: $baseSpacing;
+    }
+}
+.content {
+    @extend %block;
+    & > :first-child {
+        margin-top: 0px !important;
+    }
+    & > :last-child {
+        margin-bottom: 0px !important;
+    }
+}
+.full-height {
+    height: 100%;
+}
+.full-width {
+    width: 100%;
+}
+.full-page {
+    height: 100%;
+    width: 100%;
+    @include v-align-helper;
+}
+.panel {
+    @extend %block;
+    @extend %panel;
+    &.panel-float {
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img {
+        max-width: 100%;
+    }
+    .panel-header {
+        @extend .content;
+        padding: $smallSpacing $baseSpacing;
+        @include border-top-left-radius($baseRadius);
+        @include border-top-right-radius($baseRadius);
+    }
+    .panel-footer {
+        @extend .content;
+        background: $lightGreyColor;
+        padding: $smallSpacing $baseSpacing;
+        @include border-bottom-left-radius($baseRadius);
+        @include border-bottom-right-radius($baseRadius);
+    }
+}
+.tab-panel {
+    margin-top: -1px;
+}
+.preview-panel {
+    img {
+        vertical-align: top;
+        @include border-radius($baseRadius);
+    }
+}
+.shadowize {
+    @include shadowize;
+}
+.no-shadow {
+    @include box-shadow(none !important);
+}
+.no-border {
+    border: 0px !important;
+}
+.dashed {
+    border: 2px dashed $greyColor;
+}
+.overflow-wrapper {
+    @extend %block;
+    overflow: auto;
+}
+
+// text and background color helpers
+.txt-hint {
+    color: $darkGreyColor;
+}
+.txt-fade {
+    opacity: 0.7;
+}
+@each $color in $colorsList {
+    .txt-#{nth($color, 1)} {
+        color: nth($color, 2) !important;
+    }
+    .bg-#{nth($color, 1)} {
+        background: nth($color, 2) !important;
+    }
+    .link-#{nth($color, 1)} {
+        cursor: pointer;
+        text-decoration: none;
+        color: nth($color, 2) !important;
+        @include user-select(none);
+        @include transition(opacity 0.2s);
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+.txt-break {
+    word-break: break-all;
+}
+.txt-normal {
+    font-weight: normal;
+}
+.txt-bold {
+    font-weight: bold;
+}
+.txt-base {
+    font-size: $baseFontSize;
+}
+.txt-small {
+    @extend small;
+}
+
+// alerts
+.alert {
+    $padding: 20px;
+
+    @extend %panel;
+    position: relative;
+    padding: ($padding - 4) $padding;
+    padding-right: $baseSpacing; // space reserved for the close handle
+    margin-bottom: $smallSpacing;
+    color: $txtColor;
+    background: #fff;
+    border: 1px solid $greyColor;
+    .close-handle {
+        $size: 16px;
+        position: absolute;
+        right: $padding - 7;
+        top: 18px;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        width: $size;
+        line-height: $size;
+        text-align: center;
+        opacity: 0.6;
+        @include transition(opacity 0.2s, transform 0.2s);
+        i {
+            vertical-align: top;
+        }
+        &:hover {
+            opacity: 1;
+            @include transform(scale(1.2));
+        }
+        &:active {
+            transition-duration: 0.1s;
+            @include transform(scale(1.3));
+        }
+    }
+    & > :first-child {
+        margin-top: 0px !important;
+    }
+    & > :last-child {
+        margin-bottom: 0px !important;
+    }
+
+    &.alert-sm {
+        $padding: 15px;
+        padding: ($padding - 4) $padding;
+        padding-right: $baseSpacing; // space reserved for the close handle
+    }
+
+    // flat color layouts
+    @each $color in $colorsList {
+        &.alert-#{nth($color, 1)} {
+            border-color: nth($color, 2);
+            background: nth($color, 2);
+            color: nth($color, 3);
+            ul li:before {
+                background: nth($color, 3);
+            }
+        }
+    }
+
+    // transp layouts
+    &.alert-transp {
+        background: rgba(#fff, 0.2);
+        @each $color in $colorsList {
+            &.alert-#{nth($color, 1)} {
+                border-color: nth($color, 2);
+                background: rgba(nth($color, 2), 0.05);
+                color: nth($color, 2);
+                ul li:before {
+                    background: nth($color, 2);
+                }
+            }
+        }
+    }
+}
+
+// Labels
+.label {
+    display: inline-block;
+    vertical-align: middle;
+    color: $txtColor;
+    background: #fff;
+    border: 1px solid $greyColor;
+    padding: 3px 5px;
+    line-height: 1;
+    @include border-radius($baseRadius);
+    i {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 3px;
+    }
+
+    // flat color layouts
+    @each $color in $colorsList {
+        &.label-#{nth($color, 1)} {
+            border-color: nth($color, 2);
+            background: nth($color, 2);
+            color: nth($color, 3);
+        }
+    }
+
+    // transp layouts
+    &.label-transp {
+        background: rgba(#fff, 0.2);
+        @each $color in $colorsList {
+            &.label-#{nth($color, 1)} {
+                border-color: nth($color, 2);
+                background: rgba(nth($color, 2), 0.05);
+                color: nth($color, 2);
+            }
+        }
+    }
+}
+
+// Dropdown
+.dropdown {
+    @extend %panel;
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    max-width: 250px;
+    text-align: left;
+    color: $txtColor;
+    font-size: $baseFontSize;
+    line-height: $baseFontSize + 3;
+    &:first-child {
+        @include border-top-left-radius($baseRadius);
+        @include border-top-right-radius($baseRadius);
+    }
+    &:last-child {
+        @include border-bottom-left-radius($baseRadius);
+        @include border-bottom-right-radius($baseRadius);
+    }
+    ul {
+        @extend %block;
+        @include clear-list;
+        li {
+            @extend %block;
+        }
+    }
+    .dropdown-item {
+        @extend %block;
+        padding: 8px 10px;
+        cursor: pointer;
+        text-decoration: none;
+        white-space: nowrap;
+        @include ellipsis();
+        @include transition(color 0.2s, background 0.2s);
+        &:hover {
+            background: $lightGreyColor;
+        }
+        &:active {
+            background: $greyColor;
+        }
+        i {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 5px;
+            font-size: inherit;
+        }
+        .form-group {
+            margin: 0;
+            label {
+                width: 100%;
+                @include ellipsis();
+            }
+        }
+        // colors layout
+        @each $color in $colorsList {
+            &.dropdown-item-#{nth($color, 1)} {
+                color: nth($color, 2);
+                &:hover {
+                    background: rgba(nth($color, 2), 0.05);
+                }
+                &:active {
+                    background: rgba(nth($color, 2), 0.1);
+                }
+            }
+        }
+    }
+
+    &.dropdown-compact {
+        font-size: $baseFontSize - 2;
+        .dropdown-item {
+            padding: 5px 10px;
+        }
+    }
+}
+
+// notifications
+.notifications-wrapper {
+    display: block;
+    position: fixed;
+    z-index: 9999999999;
+    width: auto;
+    height: auto;
+    max-width: 350px;
+    right: $baseSpacing;
+    bottom: $baseSpacing;
+    .alert {
+        width: auto;
+        padding: 10px 15px;
+        line-height: 20px;
+        margin-bottom: 0;
+        margin-top: $smallSpacing;
+        @include animation(notification-show 0.4s forwards);
+        .close-handle {
+            top: 11px;
+        }
+        &.with-close-btn {
+            padding-right: 40px;
+        }
+        &.remove-start {
+            @include animation(notification-hide 0.4s forwards);
+        }
+    }
+}
+
+// paging
+.paging {
+    @extend %block;
+    @extend %clear-after;
+    text-align: right;
+    ul {
+        @include clear-list;
+        width: auto;
+        display: inline-block;
+        vertical-align: top;
+    }
+    a {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        @include transition(none);
+        color: inherit;
+    }
+    .paging-item {
+        $size: 35px;
+        float: left;
+        height: $size;
+        min-width: $size;
+        line-height: $size;
+        text-align: center;
+        padding: 0;
+        margin-left: 5px;
+        color: $darkGreyColor;
+        @include border-radius($baseRadius);
+        @include transition(background 0.2s);
+        @include user-select(none);
+        @include transition(color 0.2s);
+        &:first-child {
+            margin-left: 0;
+        }
+        .cursor-pointer:hover {
+            color: $primaryColor;
+        }
+        &.active {
+            @extend %panel;
+            background: #fff;
+        }
+        &.disabled {
+            opacity: 0.4;
+            @include pointer-events(none);
+        }
+    }
+}
+
+// Icon box
+.icon-box {
+    @extend %block;
+    padding: 15px;
+    border: 1px solid $greyColor;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    @include user-select(none);
+    @include border-radius($baseRadius);
+    @include transition(background 0.2s, color 0.2s);
+    .box-icon {
+        @extend %block;
+        margin-bottom: 10px;
+        color: $successColor;
+        font-size: $baseFontSize + 3;
+    }
+    .box-name {
+        @extend %block;
+        color: $darkGreyColor;
+        font-size: $baseFontSize;
+    }
+    &:hover {
+        background: $lightGreyColor;
+    }
+    &:active {
+        background: $greyColor;
+    }
+}
+
+.loader-icon {
+    $size: 40px;
+    display: inline-block;
+    vertical-align: top;
+    width: $size;
+    height: $size;
+    text-align: center;
+    color: $successColor;
+    font-size: 30px;
+    line-height: 32px;
+    @include animation(rotate 1.2s infinite linear);
+    i {
+        width: 100%;
+        height: 100%;
+        line-height: normal;
+    }
+    &.active {
+        @include animation(rotate 1.5s infinite linear);
+    }
+}
+
+// Upload container
+.upload-container {
+    @extend %block;
+    height: 200px;
+    max-height: 100%;
+    cursor: pointer;
+    border: 2px dashed $greyColor;
+    background: $lightGreyColor;
+    text-align: center;
+    color: $darkGreyColor;
+    @include user-select(none);
+    @include border-radius($baseRadius);
+    @include v-align-helper;
+    @include transition(background 0.2s);
+    .content {
+        @include pointer-events(none);
+    }
+    .icon {
+        display: inline-block;
+        vertical-align: top;
+        font-size: 30px;
+        line-height: 32px;
+        @include transition(color 0.2s);
+    }
+
+    // states
+    &:hover,
+    &:active {
+        .icon {
+            color: $successColor;
+        }
+    }
+    &:active {
+        background: darken($lightGreyColor, 2%);
+    }
+}
+
+.page-loader {
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    &:before {
+        $size: 13px;
+        $distance: 10px;
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 60px;
+        right: 90px;
+        width: $size;
+        height: $size;
+        background: #fff;
+        // margin-left: -(($size * 3) + (2 * $distance)) / 2;
+        // margin-top: -($size / 2);
+        @include border-radius($baseRadius);
+    }
+    &.active {
+        display: block;
+        &:before {
+            @include animation(loader 1s infinite linear);
+        }
+    }
+}
+
+.ctrls {
+    white-space: nowrap;
+    .ctrl-item {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 8px;
+        padding: 0 2px;
+        cursor: pointer;
+        text-decoration: none;
+        color: $darkGreyColor;
+        @include transition(color 0.2s, transform 0.2s);
+        &:first-child {
+            margin-left: 0px;
+        }
+        &:hover {
+            color: $primaryColor;
+            @include transform(scale(1.1));
+        }
+        &:active {
+            @include transform(scale(1.2));
+        }
+        &.delete-ctrl {
+            &:hover {
+                color: $dangerColor;
+            }
+        }
+    }
+}
+
+.app-logo {
+    font-size: 40px;
+    line-height: 1;
+}
+
+.mascot {
+    opacity: 0.25;
+    display: inline-block;
+    vertical-align: top;
+    @include user-select(none);
+}
+
+.entrance-animate {
+    @include animation(fade-in 0.4s forwards);
+}

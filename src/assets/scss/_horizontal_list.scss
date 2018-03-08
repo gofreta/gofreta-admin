@@ -1,0 +1,53 @@
+.horizontal-list {
+    .list-item {
+        $featuredSize: 55px;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        justify-content: space-between;
+        padding: 5px;
+        background: #fff;
+        border: 1px solid $greyColor;
+        margin: 0 0 10px;
+        @include border-radius($baseRadius);
+        .featured-thumb {
+            width: $featuredSize;
+            height: $featuredSize;
+            padding: 0;
+            flex-shrink: 0;
+            flex-basis: $featuredSize;
+            margin: 0 10px 0 0;
+            &:before {
+                font-size: 18px;
+            }
+            .thumb-content {
+                position: relative;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                @include transform(none);
+            }
+        }
+        .content {
+            width: 100%;
+            clear: none;
+            i {
+                vertical-align: top;
+            }
+        }
+        .content-link {
+            cursor: pointer;
+            text-decoration: none;
+            @include transition(color 0.2s);
+            &:hover,
+            &.active {
+                color: $primaryColor;
+            }
+        }
+        .ctrls {
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.fields-panel {
+    @extend %block;
+    @extend %clear-after;
+    padding: $baseSpacing;
+    padding-bottom: 0;
+    @include items-per-row(2, $baseSpacing, '.icon-box');
+    @media screen and (max-width: 1000px)  {
+        .icon-box {
+            width: 100%;
+            margin: 0 0 $smallSpacing ;
+        }
+    }
+}
