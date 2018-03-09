@@ -412,6 +412,7 @@ ol {
     @include v-align-helper;
     @media screen and (max-height: 600px)  {
         position: relative;
+        z-index: 0;
         padding: $baseSpacing;
     }
 }

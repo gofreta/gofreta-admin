@@ -12,8 +12,10 @@
                 v-for="(item, index) in data[activeLocale]"
                 v-if="item"
             >
-                <div class="featured-thumb">
-                    <div class="thumb-content"></div>
+                <div class="featured-thumb has-thumb">
+                    <div class="thumb-content">
+                        <img :src="item.path" :alt="item.title">
+                    </div>
                 </div>
                 <div class="content">{{ item.title }}</div>
                 <div class="ctrls">
@@ -37,12 +39,18 @@
 <script>
 import MediaPicker      from '@/views/media/MediaPicker'
 import ModelPickerMixin from './ModelPickerMixin'
+import {MediaModel}     from '@/models/MediaModel'
 
 export default {
     mixins: [ ModelPickerMixin ],
     name: 'media-field',
     components: {
         'media-picker': MediaPicker
+    },
+    data() {
+        return {
+            modelClass: MediaModel
+        }
     }
 };
 </script>

@@ -22,17 +22,19 @@
 
 @import './box';
 
+@import './box_lists';
+
 @import './thumb';
 
 @import './filter_panel';
 
 @import './fields_panel';
 
-@import './sort_list';
+@import './sortable';
 
 @import './horizontal_list';
 
-@import './access_rights';
+@import './permissions_list';
 
 @import './media';
 

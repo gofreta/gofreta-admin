@@ -1,6 +1,8 @@
 Gofreta Admin UI
 ======================================================================
 
+> **The project is still in very early development stage and it is not recommended to use in production environment, unless you really know what you are doing!**
+
 ![Interface screenshot](http://i.cubeupload.com/ddWm5J.png)
 
 Gofreta Admin UI is a frontend admin interface for the Gofreta REST API. It is built with [Vue.js](https://vuejs.org/) and [Webpack](https://webpack.js.org/).

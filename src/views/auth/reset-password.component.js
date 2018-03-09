@@ -11,6 +11,8 @@ export default {
     },
     mounted() {
         this.$setDocumentTitle('Reset Password');
+
+        this.resetHash = this.$route.params.hash;
     },
     methods: {
         /**

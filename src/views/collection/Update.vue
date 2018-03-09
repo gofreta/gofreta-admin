@@ -5,7 +5,7 @@
                 <nav class="breadcrumb">
                     <ul>
                         <li class="breadcrumb-item">
-                            <router-link :to="{ name: 'collection-index' }">Collections</router-link>
+                            <router-link :to="{name: 'collection-index'}">Collections</router-link>
                         </li>
                         <li class="breadcrumb-item">Update</li>
                     </ul>

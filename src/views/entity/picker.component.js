@@ -1,15 +1,5 @@
 import List from './List'
 
-/**
- * Entities picker component.
- *
- * @example
- * ```html
- * <entities-picker ref="picker" :cid="cid"></entities-picker>
- * ```
- *
- * @author Gani Georgiev <gani.georgiev@gmail.com>
- */
 export default {
     name: 'entities-picker',
     components: {

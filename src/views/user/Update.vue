@@ -58,7 +58,7 @@
                 <hr>
 
                 <div class="block">
-                    <router-link :to="{ name: 'user-index' }" class="btn btn-grey float-left">
+                    <router-link :to="{name: 'user-index'}" class="btn btn-grey float-left">
                         <span class="txt">Cancel</span>
                     </router-link>
 

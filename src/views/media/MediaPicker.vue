@@ -3,18 +3,18 @@
         <popup ref="mediaPopup" class="popup-lg">
             <div class="tabs">
                 <div class="tabs-header">
-                    <div class="tab-item" :class="{ 'active': activeTab === 'listing' }" @click.prevent="changeTab('listing')">
+                    <div class="tab-item" :class="{'active': activeTab === 'listing'}" @click.prevent="changeTab('listing')">
                         <i class="di di-archive"></i>
                         <span class="txt">File picker</span>
                     </div>
-                    <div class="tab-item" :class="{ 'active': activeTab === 'upload' }" @click.prevent="changeTab('upload')">
+                    <div class="tab-item" :class="{'active': activeTab === 'upload'}" @click.prevent="changeTab('upload')">
                         <i class="di di-cloud-upload"></i>
                         <span class="txt">Upload New File</span>
                     </div>
                 </div>
 
                 <div class="tabs-content p-l-0 p-r-0 p-b-0">
-                    <div class="tab-item" :class="{ 'active': activeTab === 'listing' }">
+                    <div class="tab-item" :class="{'active': activeTab === 'listing'}">
                         <div class="filter-panel filter-compact">
                             <div class="filter-item">
                                 <div class="form-group form-group-sm">
@@ -46,10 +46,13 @@
 
                         <div class="media-picker-list">
                             <template v-if="items.length">
+
+
+
                                 <figure class="media-item" v-for="(item, index) in items" :key="item.id" @click="onItemSelect(item)">
-                                    <div class="featured-thumb">
+                                    <div class="featured-thumb" :class="{'has-thumb': item.type == 'image'}">
                                         <div class="thumb-content">
-                                            <img src="http://via.placeholder.com/200x200" :alt="item.title" v-if="item.type == 'image'">
+                                            <img :src="item.path" :alt="item.title" v-if="item.type == 'image'">
                                         </div>
                                     </div>
                                     <div class="caption">{{ item.title }}</div>
@@ -67,7 +70,7 @@
                         <paging ref="paging" :updateRoute="false" @change="onPageChange"></paging>
                     </div>
 
-                    <div class="tab-item" :class="{ 'active': activeTab === 'upload' }">
+                    <div class="tab-item" :class="{'active': activeTab === 'upload'}">
                         <upload-form ref="uploadForm" @queuecomplete="onUploadComplete"></upload-form>
                     </div>
                 </div>

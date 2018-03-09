@@ -5,10 +5,10 @@
                 <nav class="breadcrumb">
                     <ul>
                         <li class="breadcrumb-item">
-                            <router-link :to="{ name: 'collection-index' }">Collections</router-link>
+                            <router-link :to="{name: 'collection-index'}">Collections</router-link>
                         </li>
                         <li class="breadcrumb-item">
-                            <router-link :to="{ name: 'entity-index' }">{{ collection.title }}</router-link>
+                            <router-link :to="{name: 'entity-index', params: {cid: collection.name}}">{{ collection.title }}</router-link>
                         </li>
                         <li class="breadcrumb-item">Create New Item</li>
                     </ul>

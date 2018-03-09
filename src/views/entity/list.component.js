@@ -1,10 +1,9 @@
 import ApiClient         from '@/utils/ApiClient'
-import CommonHelper     from '@/utils/CommonHelper'
+import CommonHelper      from '@/utils/CommonHelper'
 import SettingsStorage   from '@/utils/SettingsStorage'
 import {CollectionModel} from '@/models/CollectionModel'
 import {EntityModel}     from '@/models/EntityModel'
 import {LanguageModel}   from '@/models/LanguageModel'
-
 // filter fields
 import InputFilter  from './filters/InputFilter'
 import SelectFilter from './filters/SelectFilter'
@@ -185,14 +184,16 @@ export default {
             ApiClient.Entity.getList(this.cid, page, limit, filterQueryParams).then((response) => {
                 this.entities = EntityModel.getInstances(response.data);
 
-                this.$refs.paging.currentPage = response.headers['x-pagination-current-page'] << 0 || 1;
-                this.$refs.paging.totalPages  = response.headers['x-pagination-page-count'] << 0   || 1;
+                if (this.$refs.paging) {
+                    this.$refs.paging.currentPage = response.headers['x-pagination-current-page'] << 0 || 1;
+                    this.$refs.paging.totalPages  = response.headers['x-pagination-page-count'] << 0   || 1;
+
+                    this.$emit('entities-loaded', response.data, this.$refs.paging.currentPage);
+                }
 
                 if (CommonHelper.isFunction(callback)) {
                     callback(response.data);
                 }
-
-                this.$emit('entities-loaded', response.data, this.$refs.paging.currentPage);
 
                 this.$hideLoader();
             }).catch((err) => {

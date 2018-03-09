@@ -39,15 +39,6 @@
                             <small class="label label-grey m-l-5" v-if="currentUser && currentUser.id == item.id">Current</small>
                         </td>
                         <td>{{ item.email }}</td>
-
-                        <!--
-                        <td>
-                            <small class="label" :class="item.status == 'inactive' ? 'label-danger' : 'label-success'">
-                                {{ $humanize(item.status) }}
-                            </small>
-                        </td>
-                        -->
-
                         <td class="min-width">{{ $formatDate(item.modified) }}</td>
                         <td class="min-width txt-right">
                             <router-link
@@ -62,7 +53,7 @@
                                 type="button"
                                 class="btn btn-sm btn-transp btn-grey txt-danger m-l-10"
                                 @click.prevent="onDelete(item.id)"
-                                :class="{'btn-disabled': currentUser && currentUser.id == item.id}"
+                                :class="{'btn-disabled': isCurrentUser(item.id)}"
                                 v-if="$canAccess('user', 'delete')"
                             >
                                 <i class="di di-trash"></i>

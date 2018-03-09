@@ -83,6 +83,15 @@ export default {
 
                 this.$errResponseHandler(err);
             });
+        },
+
+        /**
+         * Checks whether the provided id is the current authenticated user's one.
+         * @param  {String} id
+         * @return {Boolean}
+         */
+        isCurrentUser(id) {
+            return this.currentUser && this.currentUser.id == id;
         }
     }
 }

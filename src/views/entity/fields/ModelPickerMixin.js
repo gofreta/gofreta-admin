@@ -1,5 +1,6 @@
 import CommonHelper   from '@/utils/CommonHelper'
 import BaseFieldMixin from './BaseFieldMixin'
+import {BaseModel}    from '@/models/BaseModel'
 
 var activeItemIndex = -1;
 
@@ -11,6 +12,11 @@ export default {
                 !this.field.meta.max ||
                 (this.data[this.activeLocale] && this.data[this.activeLocale].length < this.field.meta.max)
             );
+        }
+    },
+    data() {
+        return {
+            modelClass: BaseModel
         }
     },
     methods: {
@@ -54,7 +60,14 @@ export default {
         loadFromEntity(locale = '') {
             locale = locale || this.activeLocale;
 
-            var items = this.entity.getFieldValue(this.field.key, locale, []).slice(0);
+            var items = this.entity.getFieldValue(this.field.key, locale, []);
+
+            // normalize value
+            if (!CommonHelper.isArray(items)) {
+                items = [items];
+            }
+
+            items = this.modelClass.getInstances(items);
 
             for (let i in items) {
                 if (CommonHelper.isObject(items[i])) {
@@ -124,12 +137,14 @@ export default {
         onItemSelect(item, locale = '') {
             locale = locale || this.activeLocale;
 
+            var model = new this.modelClass(item);
+
             if (activeItemIndex >= 0) {
-                this.$set(this.data[locale], activeItemIndex, item);
+                this.$set(this.data[locale], activeItemIndex, model);
 
                 activeItemIndex = -1;
             } else {
-                this.data[locale].push(item);
+                this.data[locale].push(model);
             }
 
             this.multilingualResolve();

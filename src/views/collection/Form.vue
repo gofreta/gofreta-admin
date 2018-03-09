@@ -11,7 +11,7 @@
                         <vddl-draggable class="icon-box"
                             v-for="(meta, type) in fieldTypes"
                             :key="type"
-                            :draggable="{ 'isNew': true, 'type': type }"
+                            :draggable="{'isNew': true, 'type': type}"
                             effect-allowed="copy"
                         >
                             <div class="box-icon"><i class="di" :class="meta.icon"></i></div>
@@ -59,7 +59,7 @@
                     </alert>
 
                     <vddl-list class="sortable-list"
-                        :class="{ 'empty': !collection.fields.length }"
+                        :class="{'empty': !collection.fields.length}"
                         :list="collection.fields"
                         :drop="handleDrop"
                         :horizontal="false"
@@ -119,7 +119,7 @@
                     <hr class="m-t-small">
 
                     <div class="block">
-                        <router-link :to="{ name: 'collection-index' }" class="btn btn-grey float-left">
+                        <router-link :to="{name: 'collection-index'}" class="btn btn-grey float-left">
                             <span class="txt">Cancel</span>
                         </router-link>
 

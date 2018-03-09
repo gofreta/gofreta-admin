@@ -1,5 +1,5 @@
 <template>
-    <div class="block access-rights-list">
+    <div class="permissions-list">
         <span class="txt-hint" v-if="!isReady">Loading...</span>
 
         <template v-else>

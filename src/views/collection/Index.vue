@@ -66,7 +66,7 @@
                 <img src="@/assets/images/gopher_cheer.png" alt="Gopher cheer" class="mascot">
                 <h5>It seems that you don't have any Collections yet.</h5>
                 <div class="clearfix m-b-15"></div>
-                <router-link :to="{name: 'collection-create' }" class="btn btn-lg btn-cons-lg btn-success">
+                <router-link :to="{name: 'collection-create'}" class="btn btn-lg btn-cons-lg btn-success">
                     <span class="txt">Create your first Collection</span>
                 </router-link>
             </div>

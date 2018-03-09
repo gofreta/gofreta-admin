@@ -125,14 +125,3 @@
         }
     }
 }
-
-// Lists
-.collections-list {
-    @include items-per-row(4);
-    .box {
-        height: 200px;
-    }
-    @media screen and (max-width: 1000px)  {
-        @include items-per-row(2);
-    }
-}

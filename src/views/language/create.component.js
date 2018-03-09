@@ -1,6 +1,6 @@
-import ApiClient     from '@/utils/ApiClient'
+import ApiClient    from '@/utils/ApiClient'
 import CommonHelper from '@/utils/CommonHelper'
-import Form          from './Form'
+import Form         from './Form'
 
 export default {
     name: 'language-create',

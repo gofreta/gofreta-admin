@@ -24,6 +24,23 @@ export class MediaModel extends BaseModel {
     }
 
     /**
+     * Builds and returns properly formatted media image thumb url.
+     *
+     * @param  {String} size
+     * @return {String}
+     */
+    getThumb(size) {
+        if (this.type != TYPE_IMAGE) {
+            return this.path;
+        }
+
+        var parts = this.path.split('.');
+        var ext   = parts.pop();
+
+        return parts.join('.') + '_' + size + '.' + ext;
+    }
+
+    /**
      * Return list with all valid model types.
      *
      * @return {Array}

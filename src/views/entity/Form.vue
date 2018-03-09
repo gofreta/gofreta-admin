@@ -14,7 +14,7 @@
                                 :class="{
                                     'active': activeLocale === lang.locale,
                                     'txt-danger': errorsIndicator[lang.locale] === true
-                                }"
+                               }"
                                 @click.prevent="changeLocale(lang.locale)"
                             >
                                 <span class="txt">{{ lang.title }}</span>
@@ -125,7 +125,7 @@
                             <hr>
 
                             <div class="block">
-                                <router-link :to="{ name: 'entity-index', params: { cid: collection.name }}" class="link-dark-grey float-left m-t-5">
+                                <router-link :to="{name: 'entity-index', params: {cid: collection.name}}" class="link-dark-grey float-left m-t-5">
                                     Cancel
                                 </router-link>
                                 <button class="btn btn-cons btn-success float-right" @click="onSubmit">

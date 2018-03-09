@@ -18,7 +18,7 @@
         <hr class="m-t-0">
 
         <div class="block">
-            <router-link :to="{ name: 'language-index' }" class="btn btn-grey float-left">
+            <router-link :to="{name: 'language-index'}" class="btn btn-grey float-left">
                 <span class="txt">Cancel</span>
             </router-link>
 

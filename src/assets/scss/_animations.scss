@@ -36,58 +36,6 @@
     }
 }
 
-@keyframes translate-entrance {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0px);
-    }
-}
-
-@keyframes translate-exit {
-    0% {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0px);
-
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px);
-    }
-}
-
-// Tab animation
-@keyframes tab-show {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
-
-@keyframes tab-hide {
-    0% {
-        opacity: 1;
-        transform: translateY(0px);
-
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-}
-
-// Popup animations
 @keyframes popup-show {
     0% {
         opacity: 0;
@@ -113,7 +61,6 @@
     }
 }
 
-// Notification alert animations
 @keyframes notification-show {
     0% {
         opacity: 0;

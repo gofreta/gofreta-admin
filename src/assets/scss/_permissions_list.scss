@@ -1,4 +1,5 @@
-.access-rights-list {
+.permissions-list {
+    @extend %block;
     @include items-per-row(4, $baseSpacing, '.list-item');
     .list-item {
         margin-bottom: $smallSpacing;

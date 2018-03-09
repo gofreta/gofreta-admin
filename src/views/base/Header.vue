@@ -1,18 +1,18 @@
 <template>
     <header class="page-header">
         <div class="wrapper">
-            <router-link :to="{ name: $appConfig().homepageRoute }" class="header-item logo">
+            <router-link :to="{name: $appConfig().homepageRoute}" class="header-item logo">
                 <span class="txt">Gofreta</span>
                 <span class="label label-warning">beta</span>
             </router-link>
 
             <nav class="header-item main-menu">
                 <ul>
-                    <router-link :to="{ name: 'collection-index' }" tag="li" class="menu-item" active-class="active" v-if="$canAccess('collection', 'index')">
+                    <router-link :to="{name: 'collection-index'}" tag="li" class="menu-item" active-class="active" v-if="$canAccess('collection', 'index')">
                         <i class="di di-inbox"></i>
                         <span class="txt">Collections</span>
                     </router-link>
-                    <router-link :to="{ name: 'media-index' }" tag="li" class="menu-item" active-class="active" v-if="$canAccess('media', 'index')">
+                    <router-link :to="{name: 'media-index'}" tag="li" class="menu-item" active-class="active" v-if="$canAccess('media', 'index')">
                         <i class="di di-photo"></i>
                         <span class="txt">Media</span>
                     </router-link>
@@ -22,13 +22,13 @@
 
                         <nav class="sub-menu">
                             <ul>
-                                <router-link :to="{ name: 'language-index' }" tag="li" class="sub-menu-item" active-class="active">
+                                <router-link :to="{name: 'language-index'}" tag="li" class="sub-menu-item" active-class="active">
                                     <span class="txt">Languages</span>
                                 </router-link>
-                                <router-link :to="{ name: 'key-index' }" tag="li" class="sub-menu-item" active-class="active" v-if="$canAccess('key', 'index')">
+                                <router-link :to="{name: 'key-index'}" tag="li" class="sub-menu-item" active-class="active" v-if="$canAccess('key', 'index')">
                                     <span class="txt">Keys</span>
                                 </router-link>
-                                <router-link :to="{ name: 'user-index' }" tag="li" class="sub-menu-item" active-class="active" v-if="$canAccess('user', 'index')">
+                                <router-link :to="{name: 'user-index'}" tag="li" class="sub-menu-item" active-class="active" v-if="$canAccess('user', 'index')">
                                     <span class="txt">Users</span>
                                 </router-link>
                             </ul>
@@ -40,7 +40,7 @@
             <div class="header-item profile">
                 <div>
                     <template v-if="user && user.id">
-                        <router-link :to="{ name: 'user-update', params: { 'id': user.id } }" class="profile-label" v-if="$canAccess('user', 'update')">
+                        <router-link :to="{name: 'user-update', params: { 'id': user.id }}" class="profile-label" v-if="$canAccess('user', 'update')">
                             <span class="txt">{{ user.username }}</span>
                         </router-link>
                         <span class="txt" v-else>{{ user.username }}</span>

@@ -19,7 +19,7 @@
                         <input type="password" v-model="password" id="login_password" required>
 
                         <router-link
-                            :to="{ name: 'forgotten-password' }"
+                            :to="{name: 'forgotten-password'}"
                             class="txt-hint forgotten-password-link float-right"
                         >
                             <small>Forgotten Password?</small>

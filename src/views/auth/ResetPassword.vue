@@ -5,11 +5,6 @@
 
             <div class="panel panel-float p-base">
                 <form @submit.prevent="onSubmit">
-                    <form-field class="form-group form-group-compact" :track="resetHash" name="reset_password_hash">
-                        <label for="reset_password_hash">Reset Password Hash</label>
-                        <input type="text" v-model="resetHash" id="reset_password_hash" required>
-                    </form-field>
-
                     <form-field class="form-group form-group-compact" :track="password" name="password">
                         <label for="reset_password_new_password">Password</label>
                         <input type="password" v-model="password"  id="reset_password_new_password" required>
@@ -21,12 +16,12 @@
                     </form-field>
 
                     <button class="btn block btn-primary">
-                        <span class="txt">Send Reset Email</span>
+                        <span class="txt">Change Password</span>
                     </button>
                 </form>
 
                 <small class="block txt-center txt-hint m-t-small">
-                    <router-link :to="{ name: 'login' }"><i class="di di-arrow-thin-left"></i> Back to login</router-link>
+                    <router-link :to="{name: 'login'}"><i class="di di-arrow-thin-left"></i> Back to login</router-link>
                 </small>
             </div>
         </div>

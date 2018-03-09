@@ -5,7 +5,7 @@
                 <nav class="breadcrumb">
                     <ul>
                         <li class="breadcrumb-item">
-                            <router-link :to="{ name: 'media-index' }">Media</router-link>
+                            <router-link :to="{name: 'media-index'}">Media</router-link>
                         </li>
                         <li class="breadcrumb-item">
                             <span class="txt">File preview</span>

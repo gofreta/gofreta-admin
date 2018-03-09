@@ -1,9 +1,8 @@
 import ApiClient         from '@/utils/ApiClient'
-import CommonHelper     from '@/utils/CommonHelper'
+import CommonHelper      from '@/utils/CommonHelper'
 import {CollectionModel} from '@/models/CollectionModel'
 import {EntityModel}     from '@/models/EntityModel'
 import {LanguageModel}   from '@/models/LanguageModel'
-
 // fields
 import PlainField     from './fields/PlainField'
 import EditorField    from './fields/EditorField'

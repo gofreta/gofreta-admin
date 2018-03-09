@@ -67,13 +67,13 @@
                             <label :for="'bulk_' + item.id"></label>
                         </div>
 
-                        <router-link class="featured-thumb" :class="{'has-thumb': item.type == 'image'}" :to="{ name: 'media-view', params: { id: item.id } }">
+                        <router-link class="featured-thumb" :class="{'has-thumb': item.type == 'image'}" :to="{name: 'media-view', params: { id: item.id }}">
                             <div class="thumb-content">
                                 <img :src="item.path" :alt="item.title" v-if="item.type == 'image'">
                             </div>
                         </router-link>
 
-                        <router-link class="title" :to="{ name: 'media-view', params: { id: item.id } }">{{ item.title }}</router-link>
+                        <router-link class="title" :to="{name: 'media-view', params: { id: item.id }}">{{ item.title }}</router-link>
                     </figure>
                 </template>
 

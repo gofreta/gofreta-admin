@@ -5,8 +5,10 @@
 
             <div class="panel panel-float p-base">
                 <alert class="alert-success m-b-0 txt-center" v-if="success" :timeout="0" :closeBtn="false">
-                    <p>Successfully send reset password email!</p>
-                    <p>Please check your email for further instructions.</p>
+                    <p>
+                        Successfully send reset password request!<br>
+                        Please check your email for further instructions.
+                    </p>
                 </alert>
 
                 <form @submit.prevent="onSubmit" v-else>
@@ -21,7 +23,7 @@
                 </form>
 
                 <small class="block txt-center txt-hint m-t-small">
-                    <router-link :to="{ name: 'login' }"><i class="di di-arrow-thin-left"></i> Back to login</router-link>
+                    <router-link :to="{name: 'login'}"><i class="di di-arrow-thin-left"></i> Back to login</router-link>
                 </small>
             </div>
         </div>

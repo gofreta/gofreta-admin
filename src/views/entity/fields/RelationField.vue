@@ -42,8 +42,8 @@
 
 <script>
 import ModelPickerMixin from './ModelPickerMixin'
-import CommonHelper    from '@/utils/CommonHelper'
 import Picker           from '@/views/entity/Picker'
+import {EntityModel}     from '@/models/EntityModel'
 
 export default {
     mixins: [ ModelPickerMixin ],
@@ -53,7 +53,8 @@ export default {
     },
     data() {
         return {
-            codeBlocks: {}
+            codeBlocks: {},
+            modelClass: EntityModel
         }
     },
     methods: {

@@ -41,7 +41,7 @@ const router = new Router({
             component: ForgottenPassword
         },
         {
-            path:      '/reset-password',
+            path:      '/reset-password/:hash',
             name:      'reset-password',
             component: ResetPassword
         },
@@ -97,7 +97,7 @@ const router = new Router({
             meta:      {'group': 'media', 'action': 'view'}
         },
 
-        // Language
+        // Languages
         {
             path:      '/settings/languages',
             name:      'language-index',
@@ -176,7 +176,7 @@ const router = new Router({
         // "catch all" redirect
         {
             path:     '*',
-            redirect: '/collections'
+            redirect: {name: 'collection-index'}
         }
     ]
 });

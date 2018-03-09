@@ -18,6 +18,11 @@ export default {
 
         this.initDropzone();
     },
+    destroyed() {
+        if (this.dropzone) {
+            this.dropzone.destroy();
+        }
+    },
     methods: {
         /**
          * Initializes component's dropzone instance.
