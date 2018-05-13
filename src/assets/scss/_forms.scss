@@ -209,31 +209,33 @@ textarea {
 .rich-editor {
     $editorHeight: 330px;
     @extend %block;
-    .ql-toolbar {
-        background: $lightGreyColor;
-        border-color: $greyColor;
-        @include border-top-left-radius($baseRadius);
-        @include border-top-right-radius($baseRadius);
-    }
-    .ql-container {
-        border-color: $greyColor;
-        background: #fff;
-    }
-    .ql-picker {
-        background: #fff;
-        @include border-radius($baseRadius);
-        .ql-picker-label {
-            border: 0;
-            @include border-radius($baseRadius);
+    .ql-snow {
+        &.ql-toolbar {
+            background: $lightGreyColor;
+            border-color: $greyColor;
+            @include border-top-left-radius($baseRadius);
+            @include border-top-right-radius($baseRadius);
+            .ql-picker {
+                background: #fff;
+                @include border-radius($baseRadius);
+                .ql-picker-label {
+                    border: 0;
+                    @include border-radius($baseRadius);
+                }
+                .ql-picker-options {
+                    border: 0;
+                    @include border-bottom-left-radius($baseRadius);
+                    @include border-bottom-right-radius($baseRadius);
+                }
+            }
         }
-        .ql-picker-options {
-            border: 0;
-            @include border-bottom-left-radius($baseRadius);
-            @include border-bottom-right-radius($baseRadius);
+        &.ql-container {
+            border-color: $greyColor;
+            background: #fff;
+            .ql-editor {
+                height: $editorHeight;
+            }
         }
-    }
-    .ql-editor {
-        height: $editorHeight;
     }
     .markdown-textarea {
         font-size: $baseFontSize;
