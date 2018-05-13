@@ -9,6 +9,7 @@ import Paging    from '@/plugins/paging/plugin'
 import Popup     from '@/plugins/popup/plugin'
 import Dropdown  from '@/plugins/dropdown/plugin'
 import Field     from '@/plugins/field/plugin'
+import Editor    from '@/plugins/editor/plugin'
 import VueHelper from '@/utils/VueHelper';
 
 Vue.config.productionTip = false
@@ -20,6 +21,7 @@ Vue.use(Paging);
 Vue.use(Popup);
 Vue.use(Dropdown);
 Vue.use(Field);
+Vue.use(Editor);
 Vue.use(Vddl);
 Vue.use(VueHelper);
 

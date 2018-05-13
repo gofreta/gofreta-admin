@@ -205,7 +205,10 @@ textarea {
     min-height: 100px;
     resize: vertical;
 }
+
 .rich-editor {
+    $editorHeight: 330px;
+    @extend %block;
     .ql-toolbar {
         background: $lightGreyColor;
         border-color: $greyColor;
@@ -215,7 +218,6 @@ textarea {
     .ql-container {
         border-color: $greyColor;
         background: #fff;
-        @include border-radius($baseRadius);
     }
     .ql-picker {
         background: #fff;
@@ -231,7 +233,36 @@ textarea {
         }
     }
     .ql-editor {
-        height: 350px;
+        height: $editorHeight;
+    }
+    .markdown-textarea {
+        font-size: $baseFontSize;
+        height: $editorHeight + 43px;
+        @include border-bottom-left-radius(0);
+        @include border-bottom-right-radius(0);
+        &:focus {
+            color: inherit;
+            border-color: $greyColor;
+            @include box-shadow(none);
+        }
+    }
+    .status-bar {
+        @extend %block;
+        @extend %clear-after;
+        padding: 0 5px;
+        background: $greyColor;
+        @include border-bottom-left-radius($baseRadius);
+        @include border-bottom-right-radius($baseRadius);
+    }
+    .mode-ctrl {
+        float: right;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 4px 8px;
+        font-size: $baseFontSize - 1;
+        &.active {
+            color: $primaryColor;
+        }
     }
 }
 

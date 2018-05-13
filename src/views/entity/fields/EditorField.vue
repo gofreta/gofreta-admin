@@ -12,15 +12,11 @@
             <em class="v-align-top" v-if="field.required">*</em>
         </label>
 
-        <quill-editor
+        <rich-editor
             v-if="field.meta.mode == 'rich'"
             v-model="data[activeLocale]"
-            class="rich-editor"
-            :id="uniqueId"
-            :options="editorConfig"
             @change="multilingualResolve"
-        >
-        </quill-editor>
+        ></rich-editor>
 
         <textarea
             v-else
@@ -35,36 +31,8 @@
 <script>
 import BaseFieldMixin from './BaseFieldMixin'
 
-// editor
-import { quillEditor } from 'vue-quill-editor'
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-
-const editorConfig = {
-    modules: {
-        toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],
-            ['link', 'image'],
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'align': [] }],
-            [{ 'script': 'sub'}, { 'script': 'super' }],
-            ['blockquote', 'code-block'],
-            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-            [{ 'color': [] }, { 'background': [] }],
-        ]
-    }
-};
-
 export default {
     mixins: [ BaseFieldMixin ],
-    name: 'editor-field',
-    components: {
-        'quill-editor': quillEditor
-    },
-    data() {
-        return {
-            editorConfig: Object.assign({}, editorConfig)
-        }
-    }
+    name: 'editor-field'
 };
 </script>

@@ -71,7 +71,7 @@ import {MODE_RICH, MODE_SIMPLE, CFEditorModel} from '@/models/CFEditorModel'
 
 const modes        = {};
 modes[MODE_SIMPLE] = 'Simple Textarea';
-modes[MODE_RICH]   = 'Rich Text Editor (TinyMCE)';
+modes[MODE_RICH]   = 'Rich/Markdown Editor';
 
 export default {
     mixins: [ BaseFieldFormMixin ],
