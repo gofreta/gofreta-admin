@@ -37,7 +37,7 @@ export default {
                 uploadMultiple: true,
                 thumbnailWidth: null,
                 thumbnailHeight: null,
-                addRemoveLinkss: false,
+                addRemoveLinks: false,
                 createImageThumbnails: false,
                 previewTemplate: '<div style="display: none"></div>',
                 headers: {
