@@ -1,9 +1,9 @@
 Gofreta Admin UI
 ======================================================================
 
-> **The project is still in very early stage of development and is not recommended to be used in production environment, unless you really know what you are doing!**
+:warning: **This project is no longer actively maintained. Better and more extendable alternative is [PocketBase](https://github.com/pocketbase/pocketbase).**
 
-![Interface screenshot](http://i.cubeupload.com/ddWm5J.png)
+--- 
 
 Gofreta Admin UI is a frontend admin interface for the Gofreta REST API. It is built with [Vue.js](https://vuejs.org/) and [Webpack](https://webpack.js.org/).
 
